@@ -734,3 +734,76 @@ footer p {
 .whatsapp-btn:hover {
     transform: translateY(-3px);
 }
+/* VIDEO PRODUCTION DETAIL */
+
+.service-link {
+    display: grid;
+    text-decoration: none;
+    color: inherit;
+}
+
+.service-detail {
+    padding: 140px 5vw;
+    border-top: 1px solid #222;
+    background: #0b0b0b;
+}
+
+.service-detail-header {
+    max-width: 900px;
+}
+
+.service-detail-header h2 {
+    margin: 25px 0;
+    font-size: clamp(60px, 9vw, 140px);
+    line-height: 0.85;
+    letter-spacing: -5px;
+    color: #f5f5f5;
+}
+
+.service-detail-intro {
+    max-width: 500px;
+    margin-top: 40px;
+    color: #888;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.service-detail-content {
+    margin-top: 100px;
+    padding: 30px 0;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+}
+
+.service-detail-content span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+.service-detail-content p {
+    margin: 0 0 15px;
+    font-size: 22px;
+    color: #ddd;
+}
+
+.service-detail-button {
+    display: inline-block;
+    margin-top: 60px;
+    padding: 18px 28px;
+    border: 1px solid #555;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.service-detail-button:hover {
+    background: #fff;
+    color: #000;
+}
