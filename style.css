@@ -955,6 +955,366 @@ nav a:hover {
     color: #000;
 }
 
+/* ---------- CASE STUDY ---------- */
+
+.case-study {
+    position: relative;
+    padding: 150px 5vw;
+    border-top: 1px solid #222;
+    background: #090909;
+    overflow: hidden;
+}
+
+.case-study::before {
+    content: "01";
+    position: absolute;
+    top: 60px;
+    right: 5vw;
+
+    font-family: "DM Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #444;
+}
+
+.case-study-header {
+    max-width: 1000px;
+    margin-bottom: 100px;
+}
+
+.case-study-header h2 {
+    margin: 15px 0 35px;
+
+    font-size: clamp(65px, 11vw, 150px);
+    line-height: .82;
+    letter-spacing: -7px;
+    font-weight: 600;
+}
+
+.case-study-header h2 span {
+    color: #777;
+}
+
+.case-study-intro {
+    max-width: 560px;
+
+    color: #999;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* ---------- CASE STUDY VISUAL ---------- */
+
+.case-study-visual {
+    position: relative;
+
+    width: 100%;
+    height: min(70vh, 650px);
+
+    margin-bottom: 1px;
+
+    overflow: hidden;
+
+    border: 1px solid #292929;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,.12),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #1b1b1b,
+            #050505
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* GRID */
+
+.visual-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    transform: perspective(500px) rotateX(55deg) scale(1.5);
+
+    transform-origin: center bottom;
+
+    opacity: .7;
+}
+
+
+/* CENTER CONTENT */
+
+.visual-center {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.visual-center span {
+    margin-bottom: 15px;
+
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #777;
+}
+
+.visual-center strong {
+    font-size: clamp(55px, 9vw, 130px);
+    line-height: .8;
+    letter-spacing: -6px;
+    font-weight: 600;
+}
+
+.visual-center small {
+    margin-top: 30px;
+
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+
+/* CORNER INFORMATION */
+
+.visual-corner {
+    position: absolute;
+    z-index: 3;
+
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #666;
+}
+
+.visual-corner-top {
+    top: 25px;
+    right: 25px;
+}
+
+.visual-corner-bottom {
+    bottom: 25px;
+    left: 25px;
+}
+
+
+/* MOVING LIGHT */
+
+.case-study-visual::after {
+    content: "";
+
+    position: absolute;
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.05);
+
+    filter: blur(60px);
+
+    animation: visualLight 7s ease-in-out infinite alternate;
+}
+
+@keyframes visualLight {
+
+    0% {
+        transform: translate(-120px, -60px);
+    }
+
+    100% {
+        transform: translate(120px, 60px);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .case-study-visual {
+        height: 480px;
+    }
+
+    .visual-center strong {
+        font-size: 19vw;
+        letter-spacing: -4px;
+    }
+
+    .visual-grid {
+        background-size: 50px 50px;
+    }
+
+}
+
+/* CASE STUDY GRID */
+
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+
+    background: #292929;
+    border: 1px solid #292929;
+}
+
+.case-study-block {
+    min-height: 280px;
+    padding: 45px;
+
+    background: #0d0d0d;
+}
+
+.case-study-label {
+    display: block;
+    margin-bottom: 35px;
+
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+.case-study-block h3 {
+    max-width: 500px;
+
+    margin: 0 0 25px;
+
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: .95;
+    letter-spacing: -2px;
+}
+
+.case-study-block p {
+    max-width: 520px;
+
+    margin: 0;
+
+    color: #888;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.case-study-block ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.case-study-block li {
+    padding: 13px 0;
+
+    border-bottom: 1px solid #252525;
+
+    color: #ccc;
+    font-size: 14px;
+}
+
+.case-study-block li:first-child {
+    border-top: 1px solid #252525;
+}
+
+
+/* CASE STUDY CTA */
+
+.case-study-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 90px;
+    padding-top: 35px;
+
+    border-top: 1px solid #292929;
+}
+
+.case-study-cta p {
+    margin: 0;
+
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #777;
+}
+
+.case-study-cta a {
+    color: #fff;
+
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+
+    transition:
+        letter-spacing .3s ease,
+        opacity .3s ease;
+}
+
+.case-study-cta a:hover {
+    letter-spacing: 2px;
+    opacity: .7;
+}
+
+
+/* CASE STUDY MOBILE */
+
+@media (max-width: 800px) {
+
+    .case-study {
+        padding: 100px 5vw;
+    }
+
+    .case-study-header {
+        margin-bottom: 60px;
+    }
+
+    .case-study-header h2 {
+        font-size: clamp(58px, 17vw, 95px);
+        letter-spacing: -4px;
+    }
+
+    .case-study-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .case-study-block {
+        min-height: auto;
+        padding: 30px;
+    }
+
+    .case-study-cta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+}
 
 /* ---------- ABOUT ---------- */
 
