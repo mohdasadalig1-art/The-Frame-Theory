@@ -200,6 +200,54 @@ nav a:hover {
     color: #555;
 }
 
+/* ----------- HERO PREMIUM EFFECTS ----------- */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 75% 35%,
+            rgba(255, 255, 255, 0.06),
+            transparent 28%
+        );
+
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+
+    right: -180px;
+    top: 20%;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+
+    animation: heroOrbit 12s linear infinite;
+
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes heroOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 /* ---------- INTRO ---------- */
 
