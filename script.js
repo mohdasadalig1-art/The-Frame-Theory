@@ -7,7 +7,7 @@
 // SMOOTH SCROLL
 // ========================================
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+document.querySelectorAll('a[href^="#"]').forEach(function (link) {
 
     link.addEventListener('click', function (e) {
 
@@ -35,6 +35,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 
+
 // ========================================
 // NAVBAR SCROLL EFFECT
 // ========================================
@@ -43,7 +44,9 @@ const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', function () {
 
-    if (!navbar) return;
+    if (!navbar) {
+        return;
+    }
 
     if (window.scrollY > 50) {
 
@@ -58,47 +61,55 @@ window.addEventListener('scroll', function () {
 });
 
 
+
 // ========================================
 // SCROLL REVEAL ANIMATION
 // ========================================
 
 const revealElements = document.querySelectorAll(
-   '.intro, .work, .services, .service-detail, .about, .cta, .project, .service, .process, .case-study, .process-item' .service'
+    '.work, .services, .about, .project, .service, .contact-section'
 );
 
 
-const revealObserver = new IntersectionObserver(
+if ('IntersectionObserver' in window) {
 
-    function (entries) {
+    const revealObserver = new IntersectionObserver(
 
-        entries.forEach(function (entry) {
+        function (entries) {
 
-            if (entry.isIntersecting) {
+            entries.forEach(function (entry) {
 
-                entry.target.classList.add('reveal-visible');
+                if (entry.isIntersecting) {
 
-                revealObserver.unobserve(entry.target);
+                    entry.target.classList.add('reveal-visible');
 
-            }
+                    revealObserver.unobserve(entry.target);
 
-        });
+                }
 
-    },
+            });
 
-    {
-        threshold: 0.12
-    }
+        },
 
-);
+        {
+            threshold: 0.12
+        }
+
+    );
 
 
-revealElements.forEach(function (element) {
+    revealElements.forEach(function (element) {
 
-    element.classList.add('reveal-element');
+        element.classList.add('reveal-element');
 
-    revealObserver.observe(element);
+        revealObserver.observe(element);
 
-});
+    });
+
+}
+
+
+
 // ========================================
 // CUSTOM CURSOR
 // ========================================
@@ -112,11 +123,14 @@ cursorRing.className = 'cursor-ring';
 document.body.appendChild(cursorDot);
 document.body.appendChild(cursorRing);
 
+
 let mouseX = 0;
 let mouseY = 0;
 
 let ringX = 0;
 let ringY = 0;
+
+
 
 document.addEventListener('mousemove', function (e) {
 
@@ -127,6 +141,8 @@ document.addEventListener('mousemove', function (e) {
     cursorDot.style.top = mouseY + 'px';
 
 });
+
+
 
 function animateCursor() {
 
@@ -140,26 +156,39 @@ function animateCursor() {
 
 }
 
+
 animateCursor();
 
 
-// Cursor hover effect
+
+// ========================================
+// CURSOR HOVER EFFECT
+// ========================================
 
 const cursorTargets = document.querySelectorAll(
     'a, button, .project, .service'
 );
 
+
 cursorTargets.forEach(function (element) {
 
     element.addEventListener('mouseenter', function () {
+
         cursorRing.classList.add('cursor-hover');
+
     });
 
+
     element.addEventListener('mouseleave', function () {
+
         cursorRing.classList.remove('cursor-hover');
+
     });
 
 });
+
+
+
 // ========================================
 // MOBILE MENU
 // ========================================
@@ -167,14 +196,17 @@ cursorTargets.forEach(function (element) {
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNav = document.querySelector('.navbar nav');
 
+
 if (menuToggle && mobileNav) {
 
     menuToggle.addEventListener('click', function () {
 
         mobileNav.classList.toggle('mobile-menu-open');
+
         menuToggle.classList.toggle('menu-open');
 
     });
+
 
     // Close menu when a link is clicked
 
@@ -183,6 +215,7 @@ if (menuToggle && mobileNav) {
         link.addEventListener('click', function () {
 
             mobileNav.classList.remove('mobile-menu-open');
+
             menuToggle.classList.remove('menu-open');
 
         });
@@ -191,11 +224,14 @@ if (menuToggle && mobileNav) {
 
 }
 
+
+
 // ========================================
 // THE FRAME THEORY — WHATSAPP INQUIRY
 // ========================================
 
 const contactForm = document.querySelector('.contact-form');
+
 
 if (contactForm) {
 
@@ -203,24 +239,59 @@ if (contactForm) {
 
         e.preventDefault();
 
-        // GET FORM VALUES
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const company = document.getElementById('company').value.trim();
-        const service = document.getElementById('service').value;
-        const budget = document.getElementById('budget').value;
-        const message = document.getElementById('message').value.trim();
 
+        // ====================================
+        // GET FORM VALUES
+        // ====================================
+
+        const name =
+            document.getElementById('name').value.trim();
+
+        const email =
+            document.getElementById('email').value.trim();
+
+        const company =
+            document.getElementById('company').value.trim();
+
+        const service =
+            document.getElementById('service').value;
+
+        const budget =
+            document.getElementById('budget').value;
+
+        const message =
+            document.getElementById('message').value.trim();
+
+
+
+        // ====================================
         // VALIDATION
+        // ====================================
+
         if (!name || !email || !service || !message) {
-            alert('Please complete all required fields before sending your inquiry.');
+
+            alert(
+                'Please complete all required fields before sending your inquiry.'
+            );
+
             return;
+
         }
 
-        // YOUR WHATSAPP NUMBER
+
+
+        // ====================================
+        // WHATSAPP NUMBER
+        // ====================================
+
         const whatsappNumber = '919927259910';
 
-        // PROFESSIONAL WHATSAPP MESSAGE
+
+
+        // ====================================
+        // WHATSAPP MESSAGE
+        // ====================================
+
         const whatsappMessage =
 `THE FRAME THEORY
 NEW PROJECT INQUIRY
@@ -249,6 +320,7 @@ Project Brief:
 ${message}
 
 ━━━━━━━━━━━━━━━━━━━━
+
 Submitted via THE FRAME THEORY website.
 
 Looking forward to discussing the project.
@@ -256,29 +328,61 @@ Looking forward to discussing the project.
 THE FRAME THEORY
 Creative Agency`;
 
-        // CREATE WHATSAPP LINK
+
+
+        // ====================================
+        // CREATE WHATSAPP URL
+        // ====================================
+
         const whatsappURL =
             `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-        // BUTTON
+
+
+        // ====================================
+        // SUBMIT BUTTON
+        // ====================================
+
         const submitButton =
             contactForm.querySelector('.contact-submit');
 
-        submitButton.innerHTML = 'OPENING WHATSAPP...';
-        submitButton.disabled = true;
 
+        if (submitButton) {
+
+            submitButton.innerHTML =
+                'OPENING WHATSAPP...';
+
+            submitButton.disabled = true;
+
+        }
+
+
+
+        // ====================================
         // OPEN WHATSAPP
+        // ====================================
+
         window.open(
             whatsappURL,
-            '_blank',
-            'noopener,noreferrer'
+            '_blank'
         );
 
+
+
+        // ====================================
         // RESET BUTTON
+        // ====================================
+
         setTimeout(function () {
 
-            submitButton.innerHTML = 'SEND INQUIRY →';
-            submitButton.disabled = false;
+            if (submitButton) {
+
+                submitButton.innerHTML =
+                    'SEND INQUIRY →';
+
+                submitButton.disabled = false;
+
+            }
 
         }, 2000);
 
