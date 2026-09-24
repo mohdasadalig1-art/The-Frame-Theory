@@ -2489,3 +2489,59 @@ footer p {
     }
 
 }
+
+/* ========================================
+   PORTFOLIO MEDIA
+======================================== */
+
+.project-media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.project-media-placeholder {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255,255,255,.12),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #1c1c1c,
+            #060606
+        );
+
+    transition:
+        transform .8s ease,
+        opacity .5s ease;
+}
+
+.project:hover .project-media-placeholder {
+    transform: scale(1.06);
+}
+
+.project-media-placeholder span {
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #777;
+}
+
+.project-media-placeholder small {
+    margin-top: 15px;
+    font-family: "DM Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #555;
+}
