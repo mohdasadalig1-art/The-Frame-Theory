@@ -190,3 +190,58 @@ if (menuToggle && mobileNav) {
     });
 
 }
+
+// ========================================
+// CONTACT FORM → WHATSAPP
+// ========================================
+
+const contactForm = document.querySelector('.contact-form');
+
+if (contactForm) {
+
+    contactForm.addEventListener('submit', function (e) {
+
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const company = document.getElementById('company').value.trim();
+        const service = document.getElementById('service').value;
+        const budget = document.getElementById('budget').value;
+        const message = document.getElementById('message').value.trim();
+
+        // WhatsApp number
+        const whatsappNumber = '919927259910';
+
+        const whatsappMessage =
+`Hello THE FRAME THEORY,
+
+I would like to discuss a project.
+
+Name: ${name}
+
+Email: ${email}
+
+Company / Brand: ${company || 'Not provided'}
+
+Service Needed: ${service}
+
+Approximate Budget: ${budget || 'Not specified'}
+
+Project Details:
+${message}
+
+Thank you.`;
+
+        const whatsappURL =
+            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+        window.open(
+            whatsappURL,
+            '_blank',
+            'noopener,noreferrer'
+        );
+
+    });
+
+}
