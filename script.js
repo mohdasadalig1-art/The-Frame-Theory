@@ -63,7 +63,7 @@ window.addEventListener('scroll', function () {
 // ========================================
 
 const revealElements = document.querySelectorAll(
-    '.intro, .work, .services, .service-detail, .about, .cta, .project, .service'
+   '.intro, .work, .services, .service-detail, .about, .cta, .project, .service, .process, .case-study, .process-item' .service'
 );
 
 
