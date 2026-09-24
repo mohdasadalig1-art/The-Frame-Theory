@@ -192,7 +192,7 @@ if (menuToggle && mobileNav) {
 }
 
 // ========================================
-// CONTACT FORM → WHATSAPP
+// THE FRAME THEORY — WHATSAPP INQUIRY
 // ========================================
 
 const contactForm = document.querySelector('.contact-form');
@@ -203,6 +203,7 @@ if (contactForm) {
 
         e.preventDefault();
 
+        // GET FORM VALUES
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const company = document.getElementById('company').value.trim();
@@ -210,37 +211,76 @@ if (contactForm) {
         const budget = document.getElementById('budget').value;
         const message = document.getElementById('message').value.trim();
 
-        // WhatsApp number
+        // VALIDATION
+        if (!name || !email || !service || !message) {
+            alert('Please complete all required fields before sending your inquiry.');
+            return;
+        }
+
+        // YOUR WHATSAPP NUMBER
         const whatsappNumber = '919927259910';
 
+        // PROFESSIONAL WHATSAPP MESSAGE
         const whatsappMessage =
-`Hello THE FRAME THEORY,
+`THE FRAME THEORY
+NEW PROJECT INQUIRY
+━━━━━━━━━━━━━━━━━━━━
 
-I would like to discuss a project.
+CLIENT DETAILS
 
-Name: ${name}
+Name:
+${name}
 
-Email: ${email}
+Email:
+${email}
 
-Company / Brand: ${company || 'Not provided'}
+Company / Brand:
+${company || 'Not provided'}
 
-Service Needed: ${service}
+PROJECT DETAILS
 
-Approximate Budget: ${budget || 'Not specified'}
+Service Required:
+${service}
 
-Project Details:
+Approximate Budget:
+${budget || 'Not specified'}
+
+Project Brief:
 ${message}
 
-Thank you.`;
+━━━━━━━━━━━━━━━━━━━━
+Submitted via THE FRAME THEORY website.
 
+Looking forward to discussing the project.
+
+THE FRAME THEORY
+Creative Agency`;
+
+        // CREATE WHATSAPP LINK
         const whatsappURL =
             `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
+        // BUTTON
+        const submitButton =
+            contactForm.querySelector('.contact-submit');
+
+        submitButton.innerHTML = 'OPENING WHATSAPP...';
+        submitButton.disabled = true;
+
+        // OPEN WHATSAPP
         window.open(
             whatsappURL,
             '_blank',
             'noopener,noreferrer'
         );
+
+        // RESET BUTTON
+        setTimeout(function () {
+
+            submitButton.innerHTML = 'SEND INQUIRY →';
+            submitButton.disabled = false;
+
+        }, 2000);
 
     });
 
